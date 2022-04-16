@@ -1,0 +1,64 @@
+.modal-btns-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  @media only screen and (min-width: 600px) {
+    .modal-btns-container {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+  
+  .add-new-quote-btn {
+    background-color: #ed786a;
+    margin: 32px auto 0 auto;
+    padding: 0.25rem 1rem;
+    max-width: 200px;
+    font-size: 0.6rem;
+  }
+  
+  .add-new-quote-btn:hover {
+    cursor: pointer;
+    background-color: #fd887a;
+  }
+  
+  .edit-btn-icon {
+    background-color: #6898A7;
+    padding: 0.5rem 1rem 0.75rem 1rem;
+    max-width: 36px;
+    margin-bottom: 4px; 
+  }
+  
+  .edit-btn-icon:hover {
+    background-color: #6898A7;
+    cursor: pointer;
+    filter: brightness(110%);
+  }
+  
+  .edit-btn-icon span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .delete-btn-icon {
+    background-color: #D3414B;
+    padding: 8px 16px 12px 16px;
+    max-width: 36px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+   
+  }
+  
+  .delete-btn-icon:hover {
+    background-color: #D3414B;
+    cursor: pointer;
+    filter: brightness(110%);
+  }
+  
+  .delete-btn-icon span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

@@ -1,0 +1,135 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block 'title' %}
+<title>DjangoApps - Quotes</title>
+{% endblock %}
+
+{% block 'logo' %}
+<h1 id="logo">Frases para momentos</h1>
+{% endblock %}
+
+
+
+{% block 'other_styles' %}
+<link rel="stylesheet" href="{% static 'quotes/assets/css/main.css' %}" />
+{% endblock %}
+
+{% block 'main' %}
+<section id="main">
+    <div class="container">
+        <div class="row">
+
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert {{message.tags}}" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Content -->
+            <div id="content" class="col-12">
+                {% for quote in quotes %}
+                <!-- Post -->
+                <article class="box post">
+                    <h3>{{quote.thinker}}</h3>
+                    <p>{{quote.text}}</p>
+                    <div class="modal-btns-container">
+                        <button class="edit-btn-icon" data-bs-toggle="modal"
+                            data-bs-target="#modal-quote-edit-{{quote.id}}"><span class="oi oi-pencil" title="pencil"
+                                aria-hidden="true"></span></button>
+
+                        <button class="delete-btn-icon" data-bs-toggle="modal"
+                            data-bs-target="#modal-quote-delete-{{quote.id}}"><span class="oi oi-x" title="x"
+                                aria-hidden="true"></span></button>
+                    </div>
+                </article>
+
+                <!-- Modal EDIT -->
+                <div class="modal" id="modal-quote-edit-{{quote.id}}" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-body">
+                                <form action="{% url 'quotes_crud_edit' %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        <label for="quote_thinker" class="form-label">Pensador</label>
+                                        <input type="text" class="form-control" name="quote_thinker"
+                                            value="{{quote.thinker}}" id="quote_thinker">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlTextarea1" class="form-label">Texto</label>
+                                        <textarea class="form-control" id="quote_text" name="quote_text"
+                                            rows="3">{{quote.text}}</textarea>
+                                    </div>
+                                    <input type="hidden" name="quote_id" value="{{quote.id}}" />
+                                    <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Model DELETE-->
+                <div class="modal" tabindex="-1" id="modal-quote-delete-{{quote.id}}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Tem certeza que quer deletar a citação?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <form action="{% url 'quotes_crud_delete' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="quote_id" value="{{quote.id}}" />
+                                    <button type="submit" class="btn btn-danger">Deletar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <button type="button" data-bs-toggle="modal" data-bs-target="#modal-quote-create"
+                    class="add-new-quote-btn">Adicionar nova citação</button>
+
+                <!-- Modal CREATE -->
+                <div class="modal" id="modal-quote-create" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-body">
+                                <form action="{% url 'quotes_crud_create' %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        <label for="quote_thinker" class="form-label">Pensador</label>
+                                        <input type="text" class="form-control" name="quote_thinker" id="quote_thinker">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlTextarea1" class="form-label">Texto</label>
+                                        <textarea class="form-control" id="quote_text" name="quote_text"
+                                            rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-sm">Adicionar</button>
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
