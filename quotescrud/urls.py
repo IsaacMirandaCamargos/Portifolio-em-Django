@@ -6,5 +6,4 @@ urlpatterns = [
     path('delete/', views.quotes_crud_delete, name='quotes_crud_delete'),
     path('edit/', views.quotes_crud_edit, name='quotes_crud_edit'),
     path('create/', views.quotes_crud_create, name='quotes_crud_create'),
-
 ]

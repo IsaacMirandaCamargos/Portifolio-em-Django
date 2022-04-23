@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'quotescrud.apps.QuotescrudConfig',
+    'machine_learn.apps.MachineLearnConfig',
 ]
 
 MIDDLEWARE = [

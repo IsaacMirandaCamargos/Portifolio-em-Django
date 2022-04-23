@@ -1,0 +1,45 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block 'title' %}
+<title>DjangoApps - home</title>
+{% endblock %}
+
+{% block 'logo' %}
+<h1 id="logo">DjangoApps</h1>
+<p>Um site com exemplos de códigos para django!</p>
+{% endblock %}
+
+
+{% block 'main' %}
+
+<!-- Features -->
+<section id="features">
+	<div class="container">
+		<header>
+			<h2>Escolha o App e comece a <strong>Aprender Django!</h2>
+		</header>
+		<div class="row aln-center">
+			<div class="col-4 col-6-medium col-12-small">
+
+				<!-- Feature -->
+				<section>
+					<a href="#" class="image featured"><img src="{% static 'home/images/pic03.jpg' %}" alt="" /></a>
+					<header>
+						<h3>Descubra qual a sua flor.</h3>
+					</header>
+					<p>Aqui você pode identificar sua planta por meio de um algoritmo de aprendizagem de maquina.	
+					</p>
+				</section>
+
+			</div>
+			<div class="col-12">
+				<ul class="actions">
+					<li><a href="#" class="button icon solid fa-file">Tell Me More</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

@@ -13,8 +13,6 @@
 
 {% block 'main' %}
 
-
-
 <!-- Features -->
 <section id="features">
 	<div class="container">
@@ -56,13 +54,13 @@
 
 				<!-- Feature -->
 				<section>
-					<a href="#" class="image featured"><img src="{% static 'home/images/pic03.jpg' %}" alt="" /></a>
+					<a href="{% url 'machine_learn' %}" class="image featured"><img
+							src="{% static 'home/images/pic03.jpg' %}" alt="" /></a>
 					<header>
-						<h3>What's this built with?</h3>
+						<h3>Descubra qual a sua flor.</h3>
 					</header>
-					<p><strong>Responsive Tools</strong> is a simple set of tools for building responsive
-						sites and apps. All of my templates at <a href="http://html5up.net">HTML5 UP</a> are built using
-						these tools.</p>
+					<p>Aqui você pode identificar sua planta por meio de um algoritmo de aprendizagem de maquina.
+					</p>
 				</section>
 
 			</div>
