@@ -3,5 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('machine_learn/', views.machine_learn, name='machine_learn'),
+    path('machine_learn_home/', views.machine_learn_home, name='machine_learn_home'),
+    path('machine_learn_evaluating/', views.machine_learn_evaluating, name='machine_learn_evaluating')
 ]

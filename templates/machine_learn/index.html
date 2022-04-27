@@ -6,8 +6,8 @@
 {% endblock %}
 
 {% block 'logo' %}
-<h1 id="logo">DjangoApps</h1>
-<p>Um site com exemplos de códigos para django!</p>
+<h1 id="logo">Classifique sua flor</h1>
+<p>Classique sua flor com aprendizagem de maquina</p>
 {% endblock %}
 
 
@@ -16,28 +16,72 @@
 <!-- Features -->
 <section id="features">
 	<div class="container">
-		<header>
-			<h2>Escolha o App e comece a <strong>Aprender Django!</h2>
-		</header>
 		<div class="row aln-center">
+
+
+
+
 			<div class="col-4 col-6-medium col-12-small">
 
 				<!-- Feature -->
 				<section>
-					<a href="#" class="image featured"><img src="{% static 'home/images/pic03.jpg' %}" alt="" /></a>
+					<!--<a href="#" class="image featured"><img src="{% static 'home/images/pic03.jpg' %}" alt="" /></a>-->
 					<header>
-						<h3>Descubra qual a sua flor.</h3>
+						<h2>Descubra qual a sua flor.</h2>
 					</header>
-					<p>Aqui você pode identificar sua planta por meio de um algoritmo de aprendizagem de maquina.	
+					<div class="col-12">
+						<!-- Botão que chama o modal-->
+						<ul class="actions">
+							<li><button type="button" data-bs-toggle="modal" data-bs-target="#modal_predicting"
+									class="add-new-quote-btn">Avalie sua flor aqui</button></li>
+						</ul>
+
+						<!-- Modal CREATE -->
+						<div class="modal" id="modal_predicting" tabindex="-1" role="dialog">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<header>
+										<h2>Informações da flor</h2>
+										<p style="color: black; border: black;">As informações abaixo estão na unidade
+											<strong>cm</strong>.
+										</p>
+									</header>
+
+									<div class="modal-body">
+										<form action="{% url 'machine_learn_evaluating' %}" method="POST" >
+											{% csrf_token %}
+											<div style="display: flex; justify-content: center; margin-bottom: 16px;">
+												<div style="margin: 8px; margin-top: -8px;">
+													<label style="width: 85px; font-size: small;">Sepal length</label>
+													<input type="text" name="sepal_length" id="sepal_length" style="width: 85px;">
+												</div>
+												<div style="margin: 8px; margin-top: -8px;">
+													<label style="width: 85px; font-size: small;">Sepal width</label>
+													<input type="text" name="sepal_width" id="sepal_width" style="width: 85px;">
+												</div>
+												<div style="margin: 8px; margin-top: -8px;">
+													<label style="width: 85px; font-size: small;">Petal length</label>
+													<input type="text" name="petal_length" id="petal_length" style="width: 85px;">
+												</div>
+												<div style="margin: 8px; margin-top: -8px;">
+													<label style="width: 85px; font-size: small;">Petal width</label>
+													<input type="text" name="petal_width" id="petal_width" style="width: 85px;">
+												</div>
+											</div>
+											<button type="submit" class="btn btn-success btn-sm">Adicionar</button>
+											<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<p>Aqui você pode identificar sua planta por meio de um algoritmo de aprendizagem de maquina.
 					</p>
 				</section>
 
 			</div>
-			<div class="col-12">
-				<ul class="actions">
-					<li><a href="#" class="button icon solid fa-file">Tell Me More</a></li>
-				</ul>
-			</div>
+
 		</div>
 	</div>
 </section>
